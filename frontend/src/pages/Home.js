@@ -93,10 +93,11 @@ function Home() {
     try{
       const url ="http://localhost:8080/products";
       const headers = {
-        headers:{
-          'Authorization':localStorage.getItem('jwtToken')
+        headers: {
+          'Authorization': localStorage.getItem('jwtToken')
         }
-      });
+      };
+      const response = await fetch(url, headers);
       const result = await response.json();
       setProducts(result || []);
     } catch (err) {
