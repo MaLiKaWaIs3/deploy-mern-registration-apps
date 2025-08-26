@@ -21,7 +21,7 @@ function Home() {
   //create a product resource if we want to show data making by call /api
   const fetchProducts = async () =>{
     try{
-      const url ="http://localhost:8080/products";
+      const url ="https://deploy-mern-registration-apps-api.vercel.app/products";
       const headers = {
         headers:{
           'Authorization':localStorage.getItem('jwtToken')
