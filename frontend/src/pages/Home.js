@@ -84,15 +84,17 @@ function Home() {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('loggedInUser');
     handleSuccess('Logout successful');
-    setTimeout(() => navigate('/login'), 1000);
-  };
-
-  const fetchProducts = async () => {
-    try {
-      const url = "http://localhost:8080/products";
-      const response = await fetch(url, {
-        headers: {
-          'Authorization': localStorage.getItem('jwtToken')
+    setTimeout(()=>{
+      navigate('/login');
+    },1000)
+  }
+  //create a product resource if we want to show data making by call /api
+  const fetchProducts = async () =>{
+    try{
+      const url ="http://localhost:8080/products";
+      const headers = {
+        headers:{
+          'Authorization':localStorage.getItem('jwtToken')
         }
       });
       const result = await response.json();
@@ -125,4 +127,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home

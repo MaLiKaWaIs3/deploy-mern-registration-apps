@@ -130,19 +130,18 @@ function Signup() {
     const { name, email, password } = signupInfo;
 
     if (!name || !email || !password) {
-      return handleError('Name, email and password are required');
-    }
-
-    try {
-      const url = "http://localhost:8080/auth/signup";
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(signupInfo)
-      });
-
+      return handleError('name, email and password are required');
+    }//start making call api
+    try{
+        const url = "http://localhost:8080/auth/signup";
+        const response =await fetch(url,{
+          method:"POST",
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify(signupInfo)
+        }) 
+        //cases handle, error, success, validation
       const result = await response.json();
       const { success, message, error } = result;
 
@@ -203,4 +202,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Signup

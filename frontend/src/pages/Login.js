@@ -117,21 +117,19 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = loginInfo;
-
-    if (!email || !password) {
-      return handleError('Email and password are required');
-    }
-
-    try {
-      const url = "http://localhost:8080/auth/login";
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginInfo)
-      });
-
+    if ( !email || !password) {
+      return handleError(' email and password are required');
+    }//start making call api
+    try{
+        const url = "http://localhost:8080/auth/login";
+        const response =await fetch(url,{
+          method:"POST",
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify(loginInfo)
+        }) 
+        //cases handle, error, success, validation
       const result = await response.json();
       const { success, message, jwtToken, name, error } = result;
 
@@ -183,4 +181,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Login
