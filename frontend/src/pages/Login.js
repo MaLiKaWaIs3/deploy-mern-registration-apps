@@ -28,7 +28,7 @@ const navigate  = useNavigate();
       return handleError(' email and password are required');
     }//start making call api
     try{
-        const url = "http://localhost:8080/auth/login";
+        const url = "https://deploy-mern-registration-apps-api.vercel.app/auth/login";
         const response =await fetch(url,{
           method:"POST",
           headers:{
